@@ -1,0 +1,56 @@
+{
+  "name": "ai-custom-project-templates",
+  "version": "1.0.0",
+  "description": "AI定制项目模板库",
+  "private": true,
+  "workspaces": [
+    "knowledge-base-assistant/frontend",
+    "customer-service-automation/frontend",
+    "data-ai-analysis/frontend",
+    "workflow-ai-assistant/frontend"
+  ],
+  "scripts": {
+    "dev:kb": "cd knowledge-base-assistant/frontend && npm run dev",
+    "dev:csa": "cd customer-service-automation/frontend && npm run dev",
+    "dev:daa": "cd data-ai-analysis/frontend && npm run dev",
+    "dev:wfa": "cd workflow-ai-assistant/frontend && npm run dev",
+    "build:all": "npm run build:kb && npm run build:csa && npm run build:daa && npm run build:wfa",
+    "build:kb": "cd knowledge-base-assistant/frontend && npm run build",
+    "build:csa": "cd customer-service-automation/frontend && npm run build",
+    "build:daa": "cd data-ai-analysis/frontend && npm run build",
+    "build:wfa": "cd workflow-ai-assistant/frontend && npm run build",
+    "lint": "eslint . --ext .vue,.js,.ts",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.54.0",
+    "eslint-plugin-vue": "^9.19.0",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.2"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ai-custom-project-templates.git"
+  },
+  "keywords": [
+    "ai",
+    "templates",
+    "custom-projects",
+    "knowledge-base",
+    "customer-service",
+    "data-analysis",
+    "workflow-automation"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/ai-custom-project-templates/issues"
+  },
+  "homepage": "https://github.com/yourusername/ai-custom-project-templates#readme"
+}
