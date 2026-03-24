@@ -100,6 +100,11 @@ deploy_knowledge_base() {
     print_info "复制模板文件..."
     cp -r ../knowledge-base-assistant/* .
     
+    # 复制项目根目录的requirements.txt到backend
+    if [ -f ../requirements.txt ]; then
+        cp ../requirements.txt backend/
+    fi
+    
     # 创建虚拟环境
     print_info "创建Python虚拟环境..."
     python3 -m venv venv
@@ -107,13 +112,23 @@ deploy_knowledge_base() {
     
     # 安装Python依赖
     print_info "安装Python依赖..."
-    pip install -r requirements.txt
+    if [ -f "backend/requirements.txt" ]; then
+        pip install -r backend/requirements.txt
+    elif [ -f "requirements.txt" ]; then
+        pip install -r requirements.txt
+    else
+        print_warning "未找到requirements.txt，跳过Python依赖安装"
+    fi
     
     # 安装Node.js依赖
     print_info "安装Node.js依赖..."
-    cd frontend
-    npm install
-    cd ..
+    if [ -d "frontend" ] && [ -f "frontend/package.json" ]; then
+        cd frontend
+        npm install
+        cd ..
+    else
+        print_warning "未找到前端目录或package.json，跳过Node.js依赖安装"
+    fi
     
     # 创建配置文件
     print_info "创建配置文件..."
